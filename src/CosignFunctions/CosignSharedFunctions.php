@@ -87,20 +87,15 @@ class CosignSharedFunctions {
    *   User Object
    */
   public static function cosign_login_user($drupal_user) {
-    error_log("$$$$$$$$$ 1/4 actually trying to log in here...");
     user_login_finalize($drupal_user);
-    error_log("$$$$$$$$$ 2/4 actually trying to log in here...");
     $the_user = \Drupal::currentUser();
-    error_log("$$$$$$$$$ 3/4 actually trying to log in here...");
     $username = CosignSharedFunctions::cosign_retrieve_remote_user();
-    error_log("$$$$$$$$$ 4/4 actually trying to log in {$username} (c) here...");
 
     if ($the_user->getAccountName() != $username) {
       \Drupal::logger('cosign')->notice('User attempted login and the cosign username: @remote_user, did not match the drupal username: @drupal_user', array('@remote_user' => $username, '@drupal_user' => $the_user->getAccountName()));
       user_logout();
     }
 
-    error_log("L110 user_load_by_name(the_user->id)");
     return user_load_by_name($the_user->id(), TRUE);
   }
 
@@ -111,11 +106,11 @@ class CosignSharedFunctions {
    *   null
    */
   public static function cosign_friend_not_allowed() {
-    \Drupal::logger('cosign')->notice('User attempted login using a university friend account and the friend account configuration setting is turned off: @remote_user', array('@remote_user' => $username));
+    \Drupal::logger('cosign')->notice('Attempted Cosign Friend login, but Friend accounts are not permitted by configuration: @remote_user', array('@remote_user' => $username));
     \Drupal::messenger()->addWarning(t(\Drupal::config('cosign.settings')->get('cosign_friend_account_message')));
     if (\Drupal::config('cosign.settings')->get('cosign_allow_anons_on_https') == 1) {
       $cosign_brand = \Drupal::config('cosign.settings')->get('cosign_branded');
-      \Drupal::messenger()->addWarning(t('You might want to <a href="/user/logout">logout of '.$cosign_brand.'</a> to browse anonymously or as another '.$cosign_brand.' user.'));
+      \Drupal::messenger()->addWarning(t('You could <a href="/user/logout">logout of '.$cosign_brand.'</a> to browse anonymously, or log in as a '.$cosign_brand.' user.'));
     }
     else {
       user_logout();

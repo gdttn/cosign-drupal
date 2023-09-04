@@ -37,15 +37,15 @@ class CosignSubscriber implements EventSubscriberInterface {
         $base_url = rtrim($_SERVER['HTTP_HOST'], '/'). '/';
         if (!$username) {
           $request_uri = \Drupal::config('cosign.settings')->get('cosign_login_path').'?cosign-'.$_SERVER['HTTP_HOST'].'&https://'.$base_url;
-          error_log("*** NO USERNAME, REDIRECTING TO $request_uri ***");
+          #error_log("*** NO USERNAME, REDIRECTING TO $request_uri ***");
           if ($destination == $base_path.'user/login' || $destination == $base_path.'user/register') {
             $destination = str_replace('https://'.$base_url,'',$referer);
           }
           $request_uri = $request_uri . $destination;
-          error_log("*** CHANGED TO $request_uri ***");
+          #error_log("*** CHANGED TO $request_uri ***");
         }
         else {
-          error_log("*** GOT USER {$username} ***");
+          #error_log("*** GOT USER {$username} ***");
           CosignSharedFunctions::cosign_user_status($username);
           if ($request_uri == $base_path.'user/login' || $request_uri == $base_path.'user/register') {
             $request_uri = $referer;

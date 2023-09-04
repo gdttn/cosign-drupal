@@ -1,5 +1,5 @@
 cosign.admin:
   route_name: cosign.admin
   title: Cosign
-  description: 'Control the Cosign module behavior'
+  description: 'Control the Cosign authentication integration module'
   parent: system.admin_config_system

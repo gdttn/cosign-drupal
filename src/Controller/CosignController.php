@@ -42,6 +42,7 @@ class CosignController extends ControllerBase {
   public function cosign_login(Request $request) {
     $request_uri = $request->getRequestUri();
     global $base_path;
+    // TODO: check this wrt multi-vhost sites.
     if (!CosignSharedFunctions::cosign_is_https()) {
       return new TrustedRedirectResponse('https://' . $_SERVER['HTTP_HOST'] . $request_uri);
     }
@@ -55,7 +56,7 @@ class CosignController extends ControllerBase {
           $response = array(
             '#type' => 'markup',
             '#title' => 'Auto creation of user accounts is disabled.',
-            '#markup' => t('<p>This site does not auto create users from '.$cosign_brand.'. Please contact the <a href="mailto:'. \Drupal::config("system.site")->get("mail").'">site administrator</a> to have an account created.</p>'),
+            '#markup' => t('<p>You are logged into '.$cosign_brand.' but a Drupal account has not been created for you.  Please contact the <a href="mailto:'. \Drupal::config("system.site")->get("mail").'">site administrator</a> if you think you need an account, or go back to browse anonymously if permitted.</p>'),
           );
           return $response;
         }
@@ -83,7 +84,7 @@ class CosignController extends ControllerBase {
     $logout = CosignSharedFunctions::cosign_logout_url();
     user_logout();
     $response = new TrustedRedirectResponse($logout);
-    //this had to be done of user was logged into cosign/drupal for several minutes after logging out
+    // this prevents users remaining logged into cosign/drupal for several minutes after logging out
     //for ref - Cookie($name, $value, $minutes, $path, $domain, $secure, $httpOnly)
     //set value to nonsense and domain to blank so it becomes a host cookie.
     $response->headers->setCookie(new Cookie('cosign-'.$_SERVER['HTTP_HOST'], 'jibberish', 0, '/', '', -1, 0));

@@ -1,7 +1,7 @@
 name: 'Cosign'
 type: module
-description: 'Provides the Cosign authentication provider'
-version: '9.0.0-inf1'
+description: 'Adds the Cosign Authentication Provider'
+version: '9.0.0-inf2'
 core_version_requirement: ^9 || ^10
-package: Testing
+package: Authentication
 project: 'drupal'
