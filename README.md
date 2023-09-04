@@ -10,14 +10,17 @@ recommended before use; there could be site-specific code or other bugs.
 
 ## installation
    * Check out / unzip into `web/modules/contrib/cosign`
-      * example text to add to composer.json: ```{
+      * example text to add to composer.json:
+```
+{
     "repositories": [
         {
             "type": "vcs",
             "url": "https://github.com/gdttn/cosign-drupal"
         }
     ],
-}```
+}
+```
    * Then, `composer require gdttn/cosign-drupal [version if req'd]`
    * Enable the module: `drush pm:enable cosign` 
    * Configure module (in "system") or `drush config:edit cosign.settings` to point to your Cosign web service
