@@ -10,8 +10,7 @@ recommended before use; there could be site-specific code or other bugs.
 
 ## installation
    * Check out / unzip into `web/modules/contrib/cosign`
-      * example text to add to composer.json:
-      ```{
+      * example text to add to composer.json: ```{
     "repositories": [
         {
             "type": "vcs",
