@@ -1,5 +1,5 @@
 {
-  "name": "cosign",
+  "name": "gdttn/cosign",
   "description": "Drupal module to utilize CoSign for authentication.  A fork of https://www.drupal.org/project/cosign for Drupal 9+",
   "type": "drupal-module",
   "keywords": [
