@@ -1,0 +1,42 @@
+{
+  "name": "cosign",
+  "description": "Drupal module to utilize CoSign for authentication.  A fork of https://www.drupal.org/project/cosign for Drupal 9+",
+  "type": "drupal-module",
+  "keywords": [
+    "Drupal 9",
+    "Drupal 10",
+    "CoSign",
+    "Security",
+    "Module",
+    "Authentication"
+  ],
+  "homepage": "https://github.com/gdttn/cosign-drupal",
+  "license": "GPL-2.0",
+  "authors": [
+    {
+      "name": "G Dutton",
+      "homepage": "https://github.com/gdttn/",
+      "role": "Fork Owner"
+    },
+    {
+      "name": "University of Michigan Library",
+      "homepage": "https://github.com/mlibrary",
+      "role": "Prev owner"
+    },
+    {
+      "name": "Penn State Eberly College of Science ",
+      "email": "appdev@science.psu.edu", 
+      "role": "Prev Maintainer"  
+    },
+    {
+      "name": "Mike Holzer (SuperfluousApostrophe)",
+      "email": "superfluous.apostrophe@gmail.com",
+      "role": "Prev Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/cosign",
+    "source": "https://github.com/gdttn/cosign-drupal.git"
+  }
+}
+
