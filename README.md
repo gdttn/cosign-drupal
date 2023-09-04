@@ -21,7 +21,7 @@ recommended before use; there could be site-specific code or other bugs.
     ],
 }
 ```
-   * Then, `composer require gdttn/cosign-drupal [version if req'd]`
+   * Then, `composer require gdttn/cosign [...]`
    * Enable the module: `drush pm:enable cosign` 
    * Configure module (in "system") or `drush config:edit cosign.settings` to point to your Cosign web service
 
