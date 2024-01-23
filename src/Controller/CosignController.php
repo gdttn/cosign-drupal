@@ -27,7 +27,7 @@ class CosignController extends ControllerBase {
     }
     else {
       $cosign_brand = \Drupal::config('cosign.settings')->get('cosign_branded');
-      $request->attributes->get(\Symfony\Cmf\Component\Routing\RouteObjectInterface::ROUTE_OBJECT)->setDefault('_title', 'Would you like to logout of '.$cosign_brand.' also?');
+      $request->attributes->get(\Drupal\Core\Routing\RouteObjectInterface::ROUTE_OBJECT)->setDefault('_title', 'Would you like to logout of '.$cosign_brand.' also?');
       $form_class = '\Drupal\cosign\Form\CosignLogout';
       $response['form'] = \Drupal::formBuilder()->getForm($form_class);
     }

@@ -113,8 +113,8 @@ class Cosign implements AuthenticationProviderInterface {
   /**
    * {@inheritdoc}
    */
-  public function handleException(GetResponseForExceptionEvent $event) {
-    $exception = $event->getException();
+  public function handleException(ExceptionEvent $event) {
+    $exception = $event->getThrowable();
     if ($exception instanceof AccessDeniedHttpException) {
       return TRUE;
     }
