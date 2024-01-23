@@ -35,7 +35,7 @@ class CosignUnitTest extends UnitTestCase {
    *
    * @var array
    */
-  public static $modules = array('cosign', 'router_test', 'locale');
+  protected static $modules = array('cosign', 'router_test', 'locale');
 
   /**
    * Test http cosign.

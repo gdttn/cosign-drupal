@@ -4,12 +4,12 @@ namespace Drupal\cosign\EventSubscriber;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\Routing\TrustedRedirectResponse;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Drupal\cosign\CosignFunctions\CosignSharedFunctions;
 
 class CosignSubscriber implements EventSubscriberInterface {
-  public function checkRedirection(FilterResponseEvent $event) {
+  public function checkRedirection(ResponseEvent $event) {
     $request_uri = $event->getRequest()->getRequestUri();
     $referer = $event->getRequest()->server->get('HTTP_REFERER');
     if (strpos($request_uri, 'user/login') || strpos($request_uri, 'user/register')) {

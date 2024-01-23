@@ -195,7 +195,7 @@ class CosignSharedFunctions {
       $new_user = array();
       $new_user['name'] = $cosign_name;
       $new_user['status'] = 1;
-      $new_user['password'] = user_password();
+      $new_user['password'] = \Drupal\Core\Password\PasswordGeneratorInterface::generate();
       if (CosignSharedFunctions::cosign_is_friend_account($cosign_name)) {
         // friend account
         $new_user['mail'] = $cosign_name;
