@@ -1,11 +1,16 @@
 # cosign-drupal
-a module to utilize cosign for drupal logins, updated for drupal 9.x
+a module to utilize cosign for drupal logins, updated for drupal 9 and 10.
 
 ## status
 
+Tested on Drupal 9.5 and 10.0.
+
 This has been tested on one (1) local installation.  It should be usable
 anywhere Cosign is required with Drupal 9+ however reviewing the code is highly
-recommended before use; there could be site-specific code or other bugs.
+recommended before use; there could be site-specific code or other bugs lurking.
+
+Bugfix PRs are welcomed.  I don't need new features, as far as I'm aware this 
+is a dead-end technology and maintained for legacy purposes.
 
 
 ## installation
@@ -30,7 +35,7 @@ configuration since a misconfiguration via Drupal's admin interface is highly
 likely to leave you locked out.
 
 
-## .htaccess changes
+## Originally documented .htaccess changes (if required)
 
    * Add `RewriteRule ^cosign/valid - [L]` immediately below `RewriteEngine on` to prevent Drupal handling cosign requests.
    * At a bare minimum, ensure the _Location_ `/user/login` has
