@@ -45,11 +45,20 @@ class CosignSubscriber implements EventSubscriberInterface {
           #error_log("*** CHANGED TO $request_uri ***");
         }
         else {
+          /* We can't always send newly logged-in users back referrer, because for first-
+           * logins this is usually the cosign server.  So we need to determine if the 
+           * referrer is on-site (in which case, honour it) or not (in which case, go home).
+           * Ideally we'd find the originally referring internal page, if one existed.
+           */
           #error_log("*** GOT USER {$username} ***");
           CosignSharedFunctions::cosign_user_status($username);
           if ($request_uri == $base_path.'user/login' || $request_uri == $base_path.'user/register') {
-            $request_uri = $referer;
-          }
+              if (str_starts_with($referer, "https://{$_SERVER['HTTP_HOST']}")) {
+                  $request_uri = $referer;
+              } else {
+                  $request_uri = $base_path;
+              }
+          } 
           else {
             $request_uri = $destination;
           }
