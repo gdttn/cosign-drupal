@@ -35,7 +35,8 @@ configuration since a misconfiguration via Drupal's admin interface is highly
 likely to leave you locked out.
 
 
-## Originally documented .htaccess changes (if required)
+
+## Originally documented .htaccess changes for 7.x (only if required!)
 
    * Add `RewriteRule ^cosign/valid - [L]` immediately below `RewriteEngine on` to prevent Drupal handling cosign requests.
    * At a bare minimum, ensure the _Location_ `/user/login` has
@@ -57,5 +58,4 @@ likely to leave you locked out.
    * make the tests work; expand them
    * document the settings properly
    * improve debug / watchdog logs
-   * work out redirect issue
    * Produce sample config / use a variant of the protossl environment variable to partition auth users on one vhost, anons on another.
