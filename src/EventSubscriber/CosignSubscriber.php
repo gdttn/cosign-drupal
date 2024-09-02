@@ -39,7 +39,7 @@ class CosignSubscriber implements EventSubscriberInterface {
           $request_uri = \Drupal::config('cosign.settings')->get('cosign_login_path').'?cosign-'.$_SERVER['HTTP_HOST'].'&https://'.$base_url;
           #error_log("*** NO USERNAME, REDIRECTING TO $request_uri ***");
           if ($destination == $base_path.'user/login' || $destination == $base_path.'user/register') {
-            $destination = str_replace('https://'.$base_url,'',$referer);
+            $destination = str_replace('https://'.$base_url,'',$referer); // TODO: if referer is null?
           }
           $request_uri = $request_uri . $destination;
           #error_log("*** CHANGED TO $request_uri ***");
@@ -53,7 +53,7 @@ class CosignSubscriber implements EventSubscriberInterface {
           #error_log("*** GOT USER {$username} ***");
           CosignSharedFunctions::cosign_user_status($username);
           if ($request_uri == $base_path.'user/login' || $request_uri == $base_path.'user/register') {
-              if (str_starts_with($referer, "https://{$_SERVER['HTTP_HOST']}")) {
+              if ($referer != null && str_starts_with($referer, "https://{$_SERVER['HTTP_HOST']}")) {
                   $request_uri = $referer;
               } else {
                   $request_uri = $base_path;
