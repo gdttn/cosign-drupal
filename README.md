@@ -3,7 +3,7 @@ a module to utilize cosign for drupal logins, updated for drupal 9 and 10.
 
 ## status
 
-Tested on Drupal 9.x up to 9.5 and 10.x up to 10.5.  Presumed to work on Drupal 11 and 12.
+Tested on Drupal 9 up to 9.5 and 10 up to 10.4.  Presumed to work on Drupal 11 and 12.
 
 This has been tested on one (1) local installation.  It should be usable
 anywhere Cosign is required with Drupal 9+ however reviewing the code is highly
